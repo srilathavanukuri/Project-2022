@@ -9,21 +9,12 @@ namespace latha2022.pages
 {
     public class Tm_page
     {
-        private IWebDriver driver;
-
-        public Tm_page(IWebDriver driver)
-        {
-            this.driver = driver;
-        }
-
-        public Tm_page()
-        {
-        }
-
         public void MaterialDetails(IWebDriver driver)
         {
+
             //click on create new button
             driver.FindElement(By.XPath("//*[@id='container']/p/a")).Click();
+            waitHelper.WatiToBeClickable(driver, "xpath", "//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]",5);
             //select material from type code dropdown 
             IWebElement typecodeDropdown = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]"));
             typecodeDropdown.Click();
@@ -52,11 +43,11 @@ namespace latha2022.pages
             else
             {
                 Console.WriteLine("Material record not created,test failed");
-         
+
             }
             Thread.Sleep(1000);
-         }
-
+        }
+    
               public void EditTm(IWebDriver driver)
         {
             //Identify and Edit Button click
