@@ -17,7 +17,7 @@ public class TM_Tests : commonDriver
         driver.Manage().Window.Maximize();
 
         // Login page object initialization and definition
-        login_page loginpageobj = new Loginsteps();
+        login_page loginpageobj = new login_page();
         loginpageobj.Loginsteps(driver);
 
         //Home Page Object initialization and definition
@@ -53,6 +53,3 @@ public class TM_Tests : commonDriver
     {
     }
 }
-       
-
-

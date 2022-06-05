@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using latha2022.utilites;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,13 @@ namespace latha2022.pages
 {
     public class Tm_page
     {
+
         public void MaterialDetails(IWebDriver driver)
         {
 
             //click on create new button
             driver.FindElement(By.XPath("//*[@id='container']/p/a")).Click();
-            waitHelper.WatiToBeClickable(driver, "xpath", "//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]",5);
+            WaitHelper.WatiToBeClickable(driver, "xpath", "//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]",5);
             //select material from type code dropdown 
             IWebElement typecodeDropdown = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]"));
             typecodeDropdown.Click();
@@ -45,15 +47,19 @@ namespace latha2022.pages
                 Console.WriteLine("Material record not created,test failed");
 
             }
-            Thread.Sleep(1000);
+           
         }
     
               public void EditTm(IWebDriver driver)
         {
+            Thread.Sleep(1000);
+            // Go to the last page where new record created will be
+            IWebElement goToLastPageButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
+            goToLastPageButton.Click();
             //Identify and Edit Button click
             IWebElement EditButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
             EditButton.Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             //Identify and update Material record
             // Identify Code text box and update update
             IWebElement CodeBoxEdit = driver.FindElement(By.Id("Code"));
@@ -89,6 +95,10 @@ namespace latha2022.pages
         }
         public void DelTM(IWebDriver driver)
         {
+            Thread.Sleep(1000);
+            // Go to the last page where new record created will be
+            IWebElement goToLastPageButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]/span"));
+            goToLastPageButton.Click();
             //Identify delete button and click
             IWebElement DelButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
             DelButton.Click();

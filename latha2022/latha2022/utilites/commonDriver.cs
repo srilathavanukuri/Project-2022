@@ -9,6 +9,6 @@ namespace latha2022.utilites
 {
     public class commonDriver
     {
-        public static IWebDriver driver;
+        public static  IWebDriver driver;
     }
 }
